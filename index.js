@@ -1,10 +1,17 @@
-function findPeakElement(nums) {
-  let left = 0;
-  let right = nums.length - 1;
-  while (left < right) {
-    const mid = Math.floor((left + right) / 2);
-    if (nums[mid] < nums[mid + 1]) left = mid + 1;
-    else right = mid;
+function isIsomorphic(s, t) {
+  if (s.length !== t.length) return false;
+  const sMap = new Map();
+  const tMap = new Map();
+  for (let i = 0; i < s.length; i++) {
+    const sChar = s[i];
+    const tChar = t[i];
+    if (
+      (sMap.has(sChar) && sMap.get(sChar) !== tChar) ||
+      (tMap.has(tChar) && tMap.get(tChar) !== sChar)
+    )
+      return false;
+    sMap.set(sChar, tChar);
+    tMap.set(tChar, sChar);
   }
-  return left;
+  return true;
 }
