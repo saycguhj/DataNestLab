@@ -1,1 +1,1 @@
-const last = (arr) => arr[arr.length - 1];
+const head = (arr) => arr[0];
